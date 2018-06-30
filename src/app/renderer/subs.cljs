@@ -1,20 +1,6 @@
 (ns app.renderer.subs
   (:require [re-frame.core :as rf :refer [reg-sub subscribe]]))
 
-
-;; -- Domino 4 - Query  -------------------------------------------------------
-
-;; (rf/reg-sub
-;;   :time
-;;   (fn [db _]     ;; db is current app state. 2nd unused param is query vector
-;;     (:time db))) ;; return a query computation over the application state
-
-;; (rf/reg-sub
-;;   :time-color
-;;   (fn [db _]
-;;     (:time-color db)))
-
-
 ;; 数据查询
 ;; 当前显示的层级 [:layer-number] -> 1
 (rf/reg-sub
@@ -70,21 +56,6 @@
 
 ;; 查询某技能的等级和当前exp和剩余所需exp
 ;; [:skill-level-exp] -> {"skill_name" ["skill_level" "skill_exp" "need_exp"]}
-(def next-level-map
-  {"F" "E"
-   "E" "D"
-   "D" "C"
-   "C" "B"
-   "B" "A"
-   "A" "9"
-   "9" "8"
-   "8" "7"
-   "7" "6"
-   "6" "5"
-   "5" "4"
-   "4" "3"
-   "3" "2"
-   "2" "1"})
 (rf/reg-sub
  :skill-level-exp
  (fn [db _]
@@ -94,8 +65,7 @@
               (let [name-it (get skill "skill_name")
                     exp-it (get skill "skill_exp")
                     level-it (get skill "skill_level")
-                    next-level (get next-level-map level-it)
-                    next-exp (get-in levels [next-level "exp_needed"])
+                    next-exp (get-in levels [level-it "exp_needed"])
                     need-exp (- next-exp exp-it)]
                 [name-it [level-it exp-it need-exp]]))]
      (reduce merge (map #(hash-map (first %) (last %)) array-raw)))))

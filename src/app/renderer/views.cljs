@@ -118,12 +118,15 @@
         method-times (get method-map "method_times")
         skill-name (get method-map "skill_name")
         skill-level-exp @(rf/subscribe [:skill-level-exp])
-        need-times (quot (nth (get skill-level-exp skill-name) 2) method-exp)]
+        need-exp (nth (get skill-level-exp skill-name) 2)
+        need-times (+ 1 (quot need-exp method-exp))]
     [:li {:class "list-group-item d-flex justify-content-between align-items-center"
           :on-click #(rf/dispatch [:inc-method skill-name method-name])}
     method-name
+     [:div
+     [:span {:class "badge badge-pill badge-light"}(str "+" method-exp)]
      [:span {:class "badge badge-primary badge-pill"}
-      (str method-times "/" need-times)]]))
+      (str method-times "/" need-times)]]]))
 
 (defn show-all-method [skill-name]
   "显示某技能的所有可用方法"

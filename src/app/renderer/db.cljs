@@ -5,29 +5,17 @@
             [clojure.string :as str]
             ))
 
-
-;; ;; -- Domino 1 - Event Dispatch -----------------------------------------------
-
-;; (defn dispatch-timer-event
-;;   []
-;;   (let [now (js/Date.)]
-;;     (rf/dispatch [:timer now])))  ;; <-- dispatch used
-
-;; ;; Call the dispatching function every second.
-;; ;; `defonce` is like `def` but it ensures only one instance is ever
-;; ;; created in the face of figwheel hot-reloading of this file.
-;; (defonce do-timer (js/setInterval dispatch-timer-event 1000))
-
-(println "Aaaaaaaaaaaaaaaaaaaaaaaa")
 ;; 定义数据结构和读写数据库的函数,只有这里有副作用
 ;; 初始化储存位置
 (def electron       (js/require "electron"))
 (def remote            (.-remote electron))
 (def store-path (.getPath remote.app "userData"))
+(def db-path (str store-path "/db.json"))
 
 ;; 获取静态资源
 (def low (js/require "lowdb"))
 (def FileSync (js/require "lowdb/adapters/FileSync"))
+(def fs (js/require "fs-extra"))
 
 ;; levels
 (def adapter-levels (FileSync. (str js/__dirname "/json/levels.json")))
@@ -37,33 +25,26 @@
 ;; learn-methods: reading-methods, solving-methods, thinking-methods, language-methods
 (def adapter-learn-methods (FileSync. (str js/__dirname "/json/methods.json")))
 (def db-learn-methods (low adapter-learn-methods))
-(def learn-methods (.get db-learn-methods "methods"))
-
+(def learn-methods (js->clj (-> db-learn-methods
+                                (.get "methods")
+                                (.value))))
 ;; skills-vectors,默认数据
 (def adapter-skills (FileSync. (str js/__dirname "/json/skills.json")))
 (def db-skills (low adapter-skills))
 (def skills (js->clj (.value (.get db-skills "skills"))))
-;; (println (-> db-skills
-;;               (.get "skills")
-;;               ;; (.find #js{:skill_tier 1})
-;;               (.value)))
-
 ;; 用户数据库 初始化 这里的数据库是保存在磁盘中的,不是应用的内存数据库
-(def fs (js/require "fs-extra"))
-(def adapter (FileSync. (str store-path "/db.json")
-                        #js{:defaultValue #js{:skills (clj->js skills)}}))
-(def db (low adapter))
-(def default-skills-db (js->clj (-> db
-                             (.get "skills")
-                             (.value))))
-(defn get-skills-db [] (js->clj (-> db
+(defn db []
+  (let [adapter (FileSync. db-path
+                           #js{:defaultValue #js{:skills (clj->js skills)}})]
+    (low adapter)))
+(defn get-skills-db [] (js->clj (-> (db)
                                  (.get "skills")
                                  (.value))))
 
 ;; 更新数据库
 (defn inc-method-times! [skill-name method-name]
   "技能名+方法名->该方法次数+1,该技能经验=+方法经验"
-  (let [skill (-> db
+  (let [skill (-> (db)
                   (.get "skills")
                   (.find #js{:skill_name skill-name}))
         method-obj (-> skill
@@ -87,7 +68,7 @@
 
 (defn update-skill-level! [skill-name]
   "技能名称->更新该技能的等级,从等级列表中查询"
-  (let [skill (-> db
+  (let [skill (-> (db)
                   (.get "skills")
                   (.find #js{:skill_name skill-name}))
         skill-exp (-> skill
@@ -103,7 +84,7 @@
                                 level-exp-name-array)
         level-exp-name-map-sorted  (into (sorted-map-by <) level-exp-name-map)
         this-level-exp (first (vec
-                              (peek (split-with (partial > skill-exp)
+                              (last (split-with (partial > skill-exp)
                                                  (keys level-exp-name-map-sorted)))))
         this-level-name (get level-exp-name-map-sorted this-level-exp)]
     (-> skill
@@ -112,7 +93,7 @@
 
 (defn update-all-skill-level! []
   "更新所有技能的等级,用于等级算法有调整时"
-  (let [skills (js->clj  (-> db
+  (let [skills (js->clj  (-> (db)
                              (.get "skills")
                              (.value)))
         skill-name-array (for [skill skills]
@@ -122,7 +103,7 @@
 
 (defn update-skill-exp! [skill-name]
   "技能名称->更新当前技能经验,由所有的方法次数和经验算得,用于方法经验变动时"
-  (let [skill (-> db
+  (let [skill (-> (db)
                   (.get "skills")
                   (.find #js{:skill_name skill-name}))
         skill_methods (js->clj (-> skill
@@ -137,32 +118,43 @@
         (.set "skill_exp" new_exp)
         (.write))))
 
-;; (update-all-skill-level!)
-;; (update-skill-exp! "英语")
+(defn get-methods-from-class [class]
+  "给出方法类型,给出这个类型的所有方法"
+  (filter #(not= nil %)
+          (for [method learn-methods]
+            (when (= (get method "method_class") class) method))))
+(defn reset-skill-methods! [skill-name]
+  "对数据库操作,技能名称->重置该技能的所有方法为默认值"
+  (let [skill-method-class (-> (db)
+                               (.get "skills")
+                               (.find #js{:skill_name skill-name})
+                               (.get "skill_method_class")
+                               (.value))
+        skill-methods-raw (for [method-class skill-method-class]
+                        (get-methods-from-class method-class))
+        skill-methods   (vec (reduce concat  skill-methods-raw))]
+    (-> (db)
+        (.get "skills")
+        (.find #js{:skill_name skill-name})
+        (.set "skill_methods" (clj->js skill-methods))
+        (.write))))
+(defn reset-all-skill-methods! []
+  "重置所有技能的所有方法为默认值"
+  (let [skills (js->clj  (-> (db)
+                             (.get "skills")
+                             (.value)))
+        skill-name-array (for [skill skills]
+                           (get skill "skill_name"))]
+    (doseq [skill-name skill-name-array]
+      (reset-skill-methods! skill-name)))
+  (println "reset all skill methods!"))
 
-;; (inc-method-times! "英语" "背下来一个单词")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(defn destroy-db! []
+  "删除数据库,即重新初始化"
+  (let [remove-it (.remove fs db-path)]
+    (.then remove-it
+           (fn []
+             (println "destroy db!")
+             (get-skills-db)
+             (reset-all-skill-methods!)))))
 

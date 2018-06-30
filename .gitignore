@@ -4,6 +4,9 @@ resources/public/js
 resources/main.js
 target/
 
+# electron builder
+dist/
+
 # vim
 tags
 
