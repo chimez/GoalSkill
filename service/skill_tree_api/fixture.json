@@ -1,0 +1,600 @@
+[{
+        "model": "skill_tree_api.level",
+        "pk": 1,
+        "fields": {
+            "short_name": "F",
+            "name": "一无所知",
+            "describe": "你唯一比那些笨蛋强的地方就是知道这个技能的名字.",
+            "need_exp": 2000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 2,
+        "fields": {
+            "short_name": "E",
+            "name": "初窥门径",
+            "describe": "看了几页书之后,你终于知道这个技能是干什么的了.",
+            "need_exp": 7000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 3,
+        "fields": {
+            "short_name": "D",
+            "name": "略知一二",
+            "describe": "你看完了整本书,已经可以假装自己已经会这个了,但是一有人问起细节就会彻底露馅.事实上,这就是你每次参加考试时的水平",
+            "need_exp": 17000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 4,
+        "fields": {
+            "short_name": "C",
+            "name": "驾轻就熟",
+            "describe": "大部分的简单问题你都已经见过了,虽然不一定会.",
+            "need_exp": 30000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 5,
+        "fields": {
+            "short_name": "B",
+            "name": "驾轻就熟(巅峰)",
+            "describe": "你已经解出了所有的简单问题,并且隐隐感到了它们之间的关联.",
+            "need_exp": 40000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 6,
+        "fields": {
+            "short_name": "A",
+            "name": "渐入佳境",
+            "describe": "你已经总结出了常见问题的套路,简单题已经阻挡不了你了,你渴望挑战.",
+            "need_exp": 80000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 7,
+        "fields": {
+            "short_name": "9",
+            "name": "渐入佳境(巅峰)",
+            "describe": "你接触到了一个新的天地,在幼稚的简单题之上的风景尽管只是一瞥却深深的吸引着你,沉寂的野心被唤醒,做好了进入新世界的准备.",
+            "need_exp": 120000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 8,
+        "fields": {
+            "short_name": "8",
+            "name": "略有小成",
+            "describe": "在新世界的洗礼下,你已经脱胎换骨,你知道没进入新世界的人不过是蝼蚁而已.",
+            "need_exp": 150000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 9,
+        "fields": {
+            "short_name": "7",
+            "name": "略有小成(巅峰)",
+            "describe": "你确信已经很少有问题能够难住你了,只要时间充足,什么事情是办不到的.",
+            "need_exp": 250000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 10,
+        "fields": {
+            "short_name": "6",
+            "name": "游刃有余",
+            "describe": "解决常规问题已经成为了本能,甚至连思考都不需要.太多的问题只要看一眼就已经解决了,你可以剩下很多时间去做别的,因为再难办的事情你都可以很快解决.",
+            "need_exp": 300000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 11,
+        "fields": {
+            "short_name": "5",
+            "name": "炉火纯青",
+            "describe": "你不再满足于常规,像艺术品那样的打磨技能让你发现了熟知的东西中隐藏的乐趣.",
+            "need_exp": 450000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 12,
+        "fields": {
+            "short_name": "4",
+            "name": "炉火纯青(巅峰)",
+            "describe": "再简单的东西,在你的手中都闪闪发光,别人眼中你的技能已经成为艺术.",
+            "need_exp": 550000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 13,
+        "fields": {
+            "short_name": "3",
+            "name": "傲视群雄",
+            "describe": "你所能接触到的所有人中,只有几个人才能与你相提并论,你的眼中也已经没有了别人,超过他们是你的唯一追求.",
+            "need_exp": 650000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 14,
+        "fields": {
+            "short_name": "2",
+            "name": "傲视群雄(巅峰)",
+            "describe": "你都快忘了上一次有人稍微接近你是什么时候,不知不觉间你已经超越了几乎所有人.你不再有敌人了,现在的你只想超越自己.",
+            "need_exp": 1300000
+        }
+    },
+    {
+        "model": "skill_tree_api.level",
+        "pk": 15,
+        "fields": {
+            "short_name": "1",
+            "name": "登峰造极",
+            "describe": "你已经达到了人类所能的极限,现在的你只需要一个足以青史留名的杰作,就可以称得上真正的大师.",
+            "need_exp": 99999999
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 1,
+        "fields": {
+            "name": "阅读教材-看完一章",
+            "exp": 20,
+            "method_family": 1
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 2,
+        "fields": {
+            "name": "阅读教材-总结一章内容",
+            "exp": 25,
+            "method_family": 1
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 3,
+        "fields": {
+            "name": "阅读教材-记忆一个知识点:添加Anki并复习到完全记住",
+            "exp": 20,
+            "method_family": 1
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 4,
+        "fields": {
+            "name": "阅读教材-总结一本书的整体框架:思维导图",
+            "exp": 200,
+            "method_family": 1
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 5,
+        "fields": {
+            "name": "思考内容-对一个知识点有新的感悟并写下来",
+            "exp": 50,
+            "method_family": 2
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 6,
+        "fields": {
+            "name": "思考内容-对一大块知识内容融会贯通:形成一个完好的组块,思维导图等",
+            "exp": 100,
+            "method_family": 2
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 7,
+        "fields": {
+            "name": "思考内容-记忆一个知识组块-采用费曼方法重复若干次直到记住",
+            "exp": 100,
+            "method_family": 2
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 8,
+        "fields": {
+            "name": "做题-解出一道简单的题目,需要做到波利亚的四步",
+            "exp": 10,
+            "method_family": 3
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 9,
+        "fields": {
+            "name": "做题-解出一道困难的题目",
+            "exp": 50,
+            "method_family": 3
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 10,
+        "fields": {
+            "name": "做题-总结出一个题型,并将解法固定下来",
+            "exp": 500,
+            "method_family": 3
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 11,
+        "fields": {
+            "name": "背下来一个单词",
+            "exp": 10,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 12,
+        "fields": {
+            "name": "背下来一篇文章",
+            "exp": 100,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 13,
+        "fields": {
+            "name": "背下来一个语法点",
+            "exp": 50,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 14,
+        "fields": {
+            "name": "总结出一个语法组块",
+            "exp": 100,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 15,
+        "fields": {
+            "name": "完全阅读懂一篇文章:认识所有词和句子",
+            "exp": 50,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 16,
+        "fields": {
+            "name": "新写一篇文章",
+            "exp": 70,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 17,
+        "fields": {
+            "name": "修改一篇文章",
+            "exp": 100,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.method",
+        "pk": 18,
+        "fields": {
+            "name": "听写一句话",
+            "exp": 10,
+            "method_family": 4
+        }
+    },
+    {
+        "model": "skill_tree_api.methodfamily",
+        "pk": 1,
+        "fields": {
+            "name": "阅读"
+        }
+    },
+    {
+        "model": "skill_tree_api.methodfamily",
+        "pk": 2,
+        "fields": {
+            "name": "思考"
+        }
+    },
+    {
+        "model": "skill_tree_api.methodfamily",
+        "pk": 3,
+        "fields": {
+            "name": "做题"
+        }
+    },
+    {
+        "model": "skill_tree_api.methodfamily",
+        "pk": 4,
+        "fields": {
+            "name": "语言"
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 1,
+        "fields": {
+            "name": "普通物理-力学",
+            "tier": 1,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 2,
+        "fields": {
+            "name": "普通物理-电磁学",
+            "tier": 1,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 3,
+        "fields": {
+            "name": "普通物理-热学",
+            "tier": 1,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 4,
+        "fields": {
+            "name": "普通物理-光学",
+            "tier": 1,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 5,
+        "fields": {
+            "name": "普通物理-原子物理",
+            "tier": 1,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 6,
+        "fields": {
+            "name": "理论力学",
+            "tier": 2,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 7,
+        "fields": {
+            "name": "统计物理",
+            "tier": 2,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 8,
+        "fields": {
+            "name": "电动力学",
+            "tier": 2,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 9,
+        "fields": {
+            "name": "量子力学",
+            "tier": 2,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 10,
+        "fields": {
+            "name": "高等量子力学",
+            "tier": 3,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 11,
+        "fields": {
+            "name": "量子光学",
+            "tier": 3,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 12,
+        "fields": {
+            "name": "量子场论",
+            "tier": 3,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 13,
+        "fields": {
+            "name": "量子统计物理",
+            "tier": 3,
+            "skill_family": 1,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 14,
+        "fields": {
+            "name": "微积分",
+            "tier": 1,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 15,
+        "fields": {
+            "name": "线性代数",
+            "tier": 1,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 16,
+        "fields": {
+            "name": "概率论与数理统计",
+            "tier": 1,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 17,
+        "fields": {
+            "name": "复变函数",
+            "tier": 2,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 18,
+        "fields": {
+            "name": "泛函分析",
+            "tier": 2,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 19,
+        "fields": {
+            "name": "群论",
+            "tier": 3,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 20,
+        "fields": {
+            "name": "拓扑",
+            "tier": 3,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 21,
+        "fields": {
+            "name": "代数几何",
+            "tier": 3,
+            "skill_family": 2,
+            "method_family": [1, 2, 3]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 22,
+        "fields": {
+            "name": "英语",
+            "tier": 1,
+            "skill_family": 3,
+            "method_family": [4]
+        }
+    },
+    {
+        "model": "skill_tree_api.skill",
+        "pk": 23,
+        "fields": {
+            "name": "日语",
+            "tier": 1,
+            "skill_family": 3,
+            "method_family": [4]
+        }
+    },
+    {
+        "model": "skill_tree_api.skillfamily",
+        "pk": 1,
+        "fields": {
+            "name": "物理"
+        }
+    },
+    {
+        "model": "skill_tree_api.skillfamily",
+        "pk": 2,
+        "fields": {
+            "name": "数学"
+        }
+    },
+    {
+        "model": "skill_tree_api.skillfamily",
+        "pk": 3,
+        "fields": {
+            "name": "语言"
+        }
+    },
+    {
+        "model": "skill_tree_api.user",
+        "pk": 1,
+        "fields": {
+            "name": "me",
+            "skill_family": [1, 2, 3]
+        }
+    }
+]

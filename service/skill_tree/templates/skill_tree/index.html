@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>技能树</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            {% for skill_family in skill_families %}
+            <div class="col">
+                <a href={% url 'skill_tree:skill_family' skill_family.name %}> {{skill_family.name}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
